@@ -14,8 +14,14 @@ many questions must be in one quiz and the application will allow you to save an
 The user will also be able to edit and delete individual quizzes, as well as the questions inside of them. They will
 have options to set the correct answer (answers if there are more than one) for individual questions and upon 
 completion of making the quiz the user can then prompt a new panel in which they can take the quiz they just created.
-After they've taken the quiz the can check their quiz statistics to see how well they did on the quiz and whether they
+After they've taken the quiz they can check their quiz statistics to see how well they did on the quiz and whether they
 should retake it to improve their understanding. Furthermore, every time they reopen the application the quiz statistics
 section of the quiz will reset for the user, but the quizzes and questions will remain in the same state as before.
 The application should serve as a great tool for users, whether they are trying to study, survey, or test their 
 fellow peers.
+## User Story
+
+- As a user, I want to be able to add a question to my quiz
+- As a user, I want to be able to view all the questions in my quiz
+- As a user, I want to be able to complete the quiz and view performance statistics
+- As a user, I want to be able to save, create, and edit multiple quizzes simultaneously
