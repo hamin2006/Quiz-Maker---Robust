@@ -21,7 +21,9 @@ The application should serve as a great tool for users, whether they are trying 
 fellow peers.
 ## User Story
 
-- As a user, I want to be able to add a question to my quiz
-- As a user, I want to be able to view all the questions in my quiz
+- As a user, I want to be able to create a quiz and add it to a list of quizzes
+- As a user, I want to be able to add a question to a selected quiz
+- As a user, I want to be able to remove and edit questions in a quiz
+- As a user, I want to be able to view all the questions in a selected quiz
 - As a user, I want to be able to complete the quiz and view performance statistics
-- As a user, I want to be able to save, create, and edit multiple quizzes simultaneously
+- As a user, I want to be able to save, create, and edit multiple quizzes without re-running the application
