@@ -9,7 +9,7 @@ public class Quiz {
     private String title; // name of the quiz
     private ArrayList<Question> questions; // questions list in the quiz
 
-    // EFFECTS: creates new empty quiz instant with title and no questions
+    // EFFECTS: creates new empty quiz instance with title and no questions
     public Quiz(String title) {
         this.title = title;
         this.questions = new ArrayList<>();
