@@ -28,7 +28,8 @@ public class QuizMaker {
     }
 
     // MODIFIES: this
-    // EFFECTS: main application menu which passes user input to next function for handling
+    // EFFECTS: main application menu which will carry out the user input for quiz modification
+    //          or exiting the application
     public void displayMenu() {
         while (running) {
             System.out.println("What would you like to do with " + myQuiz.getTitle() + ":");
@@ -45,7 +46,8 @@ public class QuizMaker {
     }
 
     // MODIFIES: this
-    // EFFECTS: handles user input and calls corresponding helper function for user
+    // EFFECTS: handles user input and calls corresponding helper function for quiz modification
+    //          or exiting from the application
     public void handleInput(String i) {
         if (i.equals("1")) {
             addQuestion();
@@ -99,7 +101,7 @@ public class QuizMaker {
     }
 
     // MODIFIES: this
-    // EFFECTS: handles the removal of a question from the quiz
+    // EFFECTS: handles the removal of a question from the quiz based off user selection
     public void removeQuestion() {
         int numQuestions = myQuiz.getQuestions().size();
         if (numQuestions > 0) {
@@ -119,7 +121,7 @@ public class QuizMaker {
     }
 
     // MODIFIES: this
-    // EFFECTS: handles the editing of a question from the quiz
+    // EFFECTS: handles the editing of a question from the quiz based off user selection
     public void editQuestion() {
         int numQuestions = myQuiz.getQuestions().size();
         if (numQuestions > 0) {
@@ -146,7 +148,7 @@ public class QuizMaker {
     }
 
     // MODIFIES: this
-    // EFFECTS: based off of user input edits the part of the question which the user wants to change
+    // EFFECTS: based off of user input, prompts and edits the part of the question of which the user wants to change
     public void makeEdit(String option, int index, int numQuestions) {
         Question editQuestion = myQuiz.getQuestions().get(index - 1);
         boolean valid = index <= numQuestions;

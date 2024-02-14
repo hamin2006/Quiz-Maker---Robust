@@ -7,9 +7,9 @@ import java.util.*;
 // a quiz should be able to be graded and viewed in a on-paper like ordered manner
 public class Quiz {
     private String title; // name of the quiz
-    private ArrayList<Question> questions; // question list in the quiz
+    private ArrayList<Question> questions; // questions list in the quiz
 
-    // EFFECTS: creates new empty quiz insane with title and no questions
+    // EFFECTS: creates new empty quiz instant with title and no questions
     public Quiz(String title) {
         this.title = title;
         this.questions = new ArrayList<>();
