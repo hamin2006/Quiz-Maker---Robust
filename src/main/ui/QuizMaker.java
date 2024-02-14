@@ -38,9 +38,7 @@ public class QuizMaker {
             System.out.println("4. View entire quiz");
             System.out.println("5. Take quiz");
             System.out.println("6. Exit");
-            System.out.println("7. Save Quiz");
-            System.out.println("8. Load Previous Quiz");
-            System.out.print("Select an option (1-8): ");
+            System.out.print("Select an option (1-6): ");
             String choice = input.nextLine();
             handleInput(choice);
         }
