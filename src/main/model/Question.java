@@ -2,7 +2,7 @@ package model;
 
 import java.util.*;
 
-// represents a question with a question statement, answer, and options A - D
+// represents a question with a question statement, answer, and options A through D
 public class Question {
     private ArrayList<String> options; // options A - D
     private String question;    // question statement
@@ -17,7 +17,7 @@ public class Question {
     }
 
     // EFFECTS: transforms question into a outputable string
-    public String toString() {
+    public String printQuestion() {
         String list = question + "\n";
         int index = 0;
         for (String s : options) {

@@ -160,7 +160,7 @@ public class QuizMaker {
             editQuestion.setOptions(options);
 
         } else if (option.equals("3")) {
-            System.out.print(editQuestion.toString());
+            System.out.print(editQuestion.printQuestion());
             System.out.print("New Answer: ");
             String newAnswer = input.nextLine();
             editQuestion.setAnswer(newAnswer);
@@ -174,7 +174,7 @@ public class QuizMaker {
         if (myQuiz.getQuestions().size() > 0) {
             ArrayList<String> userAnswers = new ArrayList<>();
             for (Question q : myQuiz.getQuestions()) {
-                System.out.print("\n" + q.toString());
+                System.out.print("\n" + q.printQuestion());
                 System.out.print("Your Answer: ");
                 String answer = input.nextLine();
                 userAnswers.add(answer);

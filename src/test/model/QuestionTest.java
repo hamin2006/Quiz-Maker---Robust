@@ -35,8 +35,8 @@ class QuestionTest {
     }
 
     @Test
-    void testToString() {
-        assertEquals(question.toString(),
+    void testPrintQuestion() {
+        assertEquals(question.printQuestion(),
                 question.getQuestion()+"\n" +
                 "A) Harsh\n" +
                 "B) Amin\n" +
@@ -49,8 +49,9 @@ class QuestionTest {
         newOpts.add("C");
         newOpts.add("D");
         question.setOptions(newOpts);
+        question.setQuestion("changed question");
 
-        assertEquals(question.toString(),
+        assertEquals(question.printQuestion(),
                 question.getQuestion()+"\n" +
                         "A) A\n" +
                         "B) B\n" +

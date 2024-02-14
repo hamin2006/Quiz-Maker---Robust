@@ -3,9 +3,11 @@ package model;
 import java.util.*;
 
 // represents a quiz with multiple questions
+// this class should be able to manage the quiz's questions in a ordered manner
+// a quiz should be able to be graded and viewed in a on-paper like ordered manner
 public class Quiz {
-    private String title;
-    private ArrayList<Question> questions;
+    private String title; // name of the quiz
+    private ArrayList<Question> questions; // question list in the quiz
 
     // EFFECTS: creates new empty quiz insane with title and no questions
     public Quiz(String title) {
@@ -46,7 +48,7 @@ public class Quiz {
         output += title + "\n\n";
         int questionNumber = 1;
         for (Question q : questions) {
-            output += questionNumber + ". " + q.toString();
+            output += questionNumber + ". " + q.printQuestion();
             questionNumber++;
         }
         output += "----------------------------------------------------------------------------------\n";
