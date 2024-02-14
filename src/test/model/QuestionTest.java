@@ -42,5 +42,19 @@ class QuestionTest {
                 "B) Amin\n" +
                 "C) Alex\n" +
                 "D) Bob\n\n");
+
+        ArrayList<String> newOpts = new ArrayList<>();
+        newOpts.add("A");
+        newOpts.add("B");
+        newOpts.add("C");
+        newOpts.add("D");
+        question.setOptions(newOpts);
+
+        assertEquals(question.toString(),
+                question.getQuestion()+"\n" +
+                        "A) A\n" +
+                        "B) B\n" +
+                        "C) C\n" +
+                        "D) D\n\n");
     }
 }

@@ -55,8 +55,9 @@ public class QuizTest {
         assertEquals(quiz.getQuestions().get(1).getQuestion(),"q3");
 
         quiz.removeQuestion(0);
+        q3.setQuestion("q4");
         assertEquals(quiz.getQuestions().size(),1);
-        assertEquals(quiz.getQuestions().get(0).getQuestion(),"q3");
+        assertEquals(quiz.getQuestions().get(0).getQuestion(),"q4");
 
     }
 
@@ -76,7 +77,7 @@ public class QuizTest {
         answers.set(2,"C");
         assertEquals(quiz.gradeQuiz(answers),100);
 
-        answers.set(0,"B");
+        q1.setAnswer("B");
         assertEquals(quiz.gradeQuiz(answers),67);
     }
 
