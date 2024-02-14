@@ -1,10 +1,9 @@
 package model;
 
-import java.io.Serializable;
 import java.util.*;
 
 // represents a quiz with multiple questions
-public class Quiz implements Serializable {
+public class Quiz {
     private String title;
     private ArrayList<Question> questions;
 
@@ -33,7 +32,7 @@ public class Quiz implements Serializable {
         int correctAnswers = 0;
         int index = 0;
         for (String s : answers) {
-            if (answers.get(index).equals(questions.get(index).getAnswer())) {
+            if (s.equals(questions.get(index).getAnswer())) {
                 correctAnswers++;
             }
             index++;

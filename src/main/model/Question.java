@@ -1,10 +1,9 @@
 package model;
 
-import java.io.Serializable;
 import java.util.*;
 
 // represents a question with a question statement, answer, and options A - D
-public class Question implements Serializable {
+public class Question {
     private ArrayList<String> options; // options A - D
     private String question;    // question statement
     private String answer;  // answer letter
