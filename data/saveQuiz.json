@@ -1,0 +1,25 @@
+{
+    "questions": [
+        {
+            "question": "My age?",
+            "answer": "C",
+            "options": [
+                "16",
+                "17",
+                "18",
+                "19"
+            ]
+        },
+        {
+            "question": "Where am I?",
+            "answer": "A",
+            "options": [
+                "Vancouver",
+                "Calgary",
+                "Edmonton",
+                "Toronto"
+            ]
+        }
+    ],
+    "title": "Harsh's Quiz"
+}

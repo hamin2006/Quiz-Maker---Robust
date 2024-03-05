@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.*;
 
 // represents a question with a question statement, answer, and options A through D
-public class Question {
+public class Question implements Writable {
     private ArrayList<String> options; // options A - D
     private String question;    // question statement
     private String answer;  // answer letter
@@ -26,6 +30,24 @@ public class Question {
         }
         list += "\n";
         return list;
+    }
+
+    //@Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("options",optionsToJson());
+        json.put("question", question);
+        json.put("answer", answer);
+        return json;
+    }
+
+    private JSONArray optionsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (String s : options) {
+            jsonArray.put(s);
+        }
+        return jsonArray;
     }
 
     public ArrayList<String> getOptions() {

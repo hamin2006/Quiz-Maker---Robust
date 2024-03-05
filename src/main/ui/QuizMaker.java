@@ -2,7 +2,11 @@ package ui;
 
 import model.Question;
 import model.Quiz;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 // represents a quiz maker application
@@ -11,6 +15,9 @@ public class QuizMaker {
     private Quiz myQuiz;
     private boolean running;
     private static final char[] LETTERS = new char[] {'A','B','C','D'};
+    private static final String LOCATION = "./data/saveQuiz.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: run the application when a new instance is made
     public QuizMaker() {
@@ -24,6 +31,8 @@ public class QuizMaker {
         String name = input.nextLine();
         myQuiz = new Quiz(name);
         running = true;
+        jsonReader = new JsonReader(LOCATION);
+        jsonWriter = new JsonWriter(LOCATION);
         displayMenu();
     }
 
@@ -38,8 +47,10 @@ public class QuizMaker {
             System.out.println("3. Edit a question");
             System.out.println("4. View entire quiz");
             System.out.println("5. Take quiz");
-            System.out.println("6. Exit");
-            System.out.print("Select an option (1-6): ");
+            System.out.println("6. Save quiz");
+            System.out.println("7. Load Saved Quiz");
+            System.out.println("8. Exit");
+            System.out.print("Select an option (1-8): ");
             String choice = input.nextLine();
             handleInput(choice);
         }
@@ -60,6 +71,10 @@ public class QuizMaker {
         } else if (i.equals("5")) {
             takeQuiz();
         } else if (i.equals("6")) {
+            saveQuiz();
+        } else if (i.equals("7")) {
+            loadQuiz();
+        } else if (i.equals("8")) {
             input.close();
             running = false;
         } else {
@@ -184,6 +199,26 @@ public class QuizMaker {
             System.out.println("\nYour score: " + Integer.valueOf((int) myQuiz.gradeQuiz(userAnswers)) + "%\n");
         } else {
             System.out.println("\nNo Questions\n");
+        }
+    }
+
+    public void saveQuiz() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(myQuiz);
+            jsonWriter.close();
+            System.out.println("Saved " + myQuiz.getTitle() + " to " + LOCATION);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + LOCATION);
+        }
+    }
+
+    public void loadQuiz() {
+        try {
+            myQuiz = jsonReader.read();
+            System.out.println("Loaded " + myQuiz.getTitle() + " from " + LOCATION);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + LOCATION);
         }
     }
 }

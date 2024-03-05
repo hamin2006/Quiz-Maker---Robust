@@ -1,11 +1,15 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.*;
 
 // represents a quiz with multiple questions
 // this class should be able to manage the quiz's questions in a ordered manner
 // a quiz should be able to be graded and viewed in a on-paper like ordered manner
-public class Quiz {
+public class Quiz implements Writable {
     private String title; // name of the quiz
     private ArrayList<Question> questions; // questions list in the quiz
 
@@ -53,6 +57,23 @@ public class Quiz {
         }
         output += "----------------------------------------------------------------------------------\n";
         return output;
+    }
+
+    //@Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("questions", questionsToJson());
+        json.put("title", title);
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray questionsToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (Question q : questions) {
+            jsonArray.put(q.toJson());
+        }
+        return jsonArray;
     }
 
     public String getTitle() {
