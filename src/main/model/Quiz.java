@@ -59,7 +59,8 @@ public class Quiz implements Writable {
         return output;
     }
 
-    //@Override
+    // EFFECTS: returns a json object which serializes the quiz instance
+    @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("questions", questionsToJson());
@@ -67,7 +68,7 @@ public class Quiz implements Writable {
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns questions in this quiz as a JSON array
     private JSONArray questionsToJson() {
         JSONArray jsonArray = new JSONArray();
         for (Question q : questions) {

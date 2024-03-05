@@ -25,9 +25,9 @@ public class JsonWriter {
     }
 
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of workroom to file
-    public void write(Quiz wr) {
-        JSONObject json = wr.toJson();
+    // EFFECTS: writes JSON representation of quiz to file
+    public void write(Quiz qu) {
+        JSONObject json = qu.toJson();
         saveToFile(json.toString(TAB));
     }
 

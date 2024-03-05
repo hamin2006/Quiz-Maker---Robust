@@ -32,7 +32,8 @@ public class Question implements Writable {
         return list;
     }
 
-    //@Override
+    // EFFECTS: returns a json object which serializes the question instance
+    @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("options",optionsToJson());
@@ -41,6 +42,7 @@ public class Question implements Writable {
         return json;
     }
 
+    // EFFECTS: returns a json array with the question options
     private JSONArray optionsToJson() {
         JSONArray jsonArray = new JSONArray();
 

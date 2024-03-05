@@ -21,7 +21,7 @@ public class JsonReader {
         this.source = source;
     }
 
-    // EFFECTS: reads workroom from file and returns it;
+    // EFFECTS: reads quiz from file and returns it;
     // throws IOException if an error occurs reading data from file
     public Quiz read() throws IOException {
         String jsonData = readFile(source);
@@ -40,7 +40,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses workroom from JSON object and returns it
+    // EFFECTS: parses quiz from JSON object and returns it
     private Quiz parseQuiz(JSONObject jsonObject) {
         String title = jsonObject.getString("title");
         Quiz qu = new Quiz(title);
@@ -48,26 +48,27 @@ public class JsonReader {
         return qu;
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
-    private void addQuestions(Quiz wr, JSONObject jsonObject) {
+    // MODIFIES: qu
+    // EFFECTS: parses questions from JSON object and adds them to workroom
+    private void addQuestions(Quiz qu, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("questions");
         for (Object json : jsonArray) {
             JSONObject nextQuestion = (JSONObject) json;
-            addQuestion(wr, nextQuestion);
+            addQuestion(qu, nextQuestion);
         }
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
-    private void addQuestion(Quiz wr, JSONObject jsonObject) {
+    // MODIFIES: qu
+    // EFFECTS: parses a question from JSON object and adds it to workroom
+    private void addQuestion(Quiz qu, JSONObject jsonObject) {
         String question = jsonObject.getString("question");
         ArrayList<String> options = getOptions(jsonObject.getJSONArray("options"));
         String answer = jsonObject.getString("answer");
         Question newQ = new Question(question, options, answer);
-        wr.addQuestion(newQ);
+        qu.addQuestion(newQ);
     }
 
+    // EFFECTS: returns a string arrayList of the options for a question, parsed from json array
     private ArrayList<String> getOptions(JSONArray jsonArray) {
         ArrayList<String> options = new ArrayList<>();
         for (Object json : jsonArray) {
