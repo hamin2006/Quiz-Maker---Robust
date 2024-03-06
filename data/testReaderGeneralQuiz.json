@@ -1,0 +1,25 @@
+{
+  "questions": [
+    {
+      "question": "My age?",
+      "answer": "B",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "question": "My name?",
+      "answer": "A",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "title": "My quiz"
+}
