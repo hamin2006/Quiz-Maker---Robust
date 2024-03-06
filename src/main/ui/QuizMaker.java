@@ -208,9 +208,9 @@ public class QuizMaker {
             jsonWriter.open();
             jsonWriter.write(myQuiz);
             jsonWriter.close();
-            System.out.println("Saved " + myQuiz.getTitle() + " to " + LOCATION);
+            System.out.println("\nSaved " + myQuiz.getTitle() + " to " + LOCATION + "\n");
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + LOCATION);
+            System.out.println("\nUnable to write to file: " + LOCATION + "\n");
         }
     }
 
@@ -220,7 +220,7 @@ public class QuizMaker {
             myQuiz = jsonReader.read();
             System.out.println("\nLoaded " + myQuiz.getTitle() + " from " + LOCATION + "\n");
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + LOCATION + "\n");
+            System.out.println("\nUnable to read from file: " + LOCATION + "\n");
         }
     }
 }
