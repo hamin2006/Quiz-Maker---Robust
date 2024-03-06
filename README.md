@@ -26,5 +26,6 @@ fellow peers.
 - **As a user, I want to be able to remove and edit questions in a quiz**                
 - **As a user, I want to be able to view/list all the questions in a selected quiz**          
 - **As a user, I want to be able to complete the quiz and view performance statistics** 
-- As a user, I want to be able to save and load the previous quiz(zes) worked on
-- As a user, I want to have access to multiple quizzes that can be saved and edited
+- **As a user, I want to have the option to save the state of the quiz(zes) that have been worked on to file**
+- **As a user, I want to have the option to load the state of previously saved quiz(zes) from file**
+- **As a user, I want to have access to multiple quizzes that can be saved and edited**
