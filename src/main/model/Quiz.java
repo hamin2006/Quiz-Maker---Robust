@@ -68,7 +68,7 @@ public class Quiz implements Writable {
         return json;
     }
 
-    // EFFECTS: returns questions in this quiz as a JSON array
+    // EFFECTS: returns questions in this quiz as JSON objects in a JSON array
     private JSONArray questionsToJson() {
         JSONArray jsonArray = new JSONArray();
         for (Question q : questions) {

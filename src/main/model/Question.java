@@ -56,16 +56,16 @@ public class Question implements Writable {
         return options;
     }
 
-    public void setOptions(ArrayList<String> options) {
-        this.options = options;
-    }
-
     public String getAnswer() {
         return answer;
     }
 
     public String getQuestion() {
         return question;
+    }
+
+    public void setOptions(ArrayList<String> options) {
+        this.options = options;
     }
 
     public void setQuestion(String question) {

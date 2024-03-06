@@ -202,6 +202,7 @@ public class QuizMaker {
         }
     }
 
+    // EFFECTS: saves the quiz to json file
     public void saveQuiz() {
         try {
             jsonWriter.open();
@@ -213,12 +214,13 @@ public class QuizMaker {
         }
     }
 
+    // EFFECTS: loads previously saved quiz from json file
     public void loadQuiz() {
         try {
             myQuiz = jsonReader.read();
-            System.out.println("Loaded " + myQuiz.getTitle() + " from " + LOCATION);
+            System.out.println("\nLoaded " + myQuiz.getTitle() + " from " + LOCATION + "\n");
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + LOCATION);
+            System.out.println("Unable to read from file: " + LOCATION + "\n");
         }
     }
 }

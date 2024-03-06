@@ -10,7 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import model.Quiz;
 import model.Question;
-public class JsonReaderTest extends JsonTest{
+public class JsonReaderTest extends JsonTest {
+
     @Test
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
