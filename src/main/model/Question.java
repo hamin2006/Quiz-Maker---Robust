@@ -42,6 +42,25 @@ public class Question implements Writable {
         return json;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Question question1 = (Question) o;
+        return Objects.equals(options, question1.options)
+                && Objects.equals(question, question1.question)
+                && Objects.equals(answer, question1.answer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(options, question, answer);
+    }
+
     // EFFECTS: returns a json array with the question options
     private JSONArray optionsToJson() {
         JSONArray jsonArray = new JSONArray();
