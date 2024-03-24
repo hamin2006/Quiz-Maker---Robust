@@ -49,7 +49,7 @@ public class JsonReader {
     }
 
     // MODIFIES: qu
-    // EFFECTS: parses questions from JSON object and adds them to workroom
+    // EFFECTS: parses questions from JSON object and adds them to quiz
     private void addQuestions(Quiz qu, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("questions");
         for (Object json : jsonArray) {
@@ -59,7 +59,7 @@ public class JsonReader {
     }
 
     // MODIFIES: qu
-    // EFFECTS: parses a question from JSON object and adds it to workroom
+    // EFFECTS: parses a question from JSON object and adds it to quiz
     private void addQuestion(Quiz qu, JSONObject jsonObject) {
         String question = jsonObject.getString("question");
         ArrayList<String> options = getOptions(jsonObject.getJSONArray("options"));

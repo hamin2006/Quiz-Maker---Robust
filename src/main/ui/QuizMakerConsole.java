@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.*;
 
 // represents a quiz maker application
-public class QuizMaker {
+public class QuizMakerConsole {
     private Scanner input = new Scanner(System.in);
     private Quiz myQuiz;
     private boolean running;
@@ -20,7 +20,7 @@ public class QuizMaker {
     private JsonReader jsonReader;
 
     // EFFECTS: run the application when a new instance is made
-    public QuizMaker() {
+    public QuizMakerConsole() {
         runProject();
     }
 

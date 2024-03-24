@@ -19,6 +19,26 @@
                 "Edmonton",
                 "Toronto"
             ]
+        },
+        {
+            "question": "Best uni?",
+            "answer": "A",
+            "options": [
+                "UBC",
+                "UofT",
+                "Waterloo",
+                "UofC"
+            ]
+        },
+        {
+            "question": "Which class am I in?",
+            "answer": "A",
+            "options": [
+                "210",
+                "121",
+                "110",
+                "221"
+            ]
         }
     ],
     "title": "Harsh's Quiz"
