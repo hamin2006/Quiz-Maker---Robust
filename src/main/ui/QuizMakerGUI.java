@@ -11,6 +11,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -36,6 +37,7 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
     private JButton take;
     private JButton view;
     private JButton save;
+    private JButton load;
     private Quiz quiz;
     private String title;
 
@@ -60,12 +62,16 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         writeTitle = new JTextArea();
         writeTitle.setBounds((WIDTH / 2) - 125,HEIGHT - 500,400,20);
         makeQuiz = new JButton("Enter");
-        makeQuiz.setBounds((WIDTH / 2) - 125,HEIGHT - 470,400,25);
+        makeQuiz.setBounds((WIDTH / 2) - 125,HEIGHT - 470,400,60);
         makeQuiz.addActionListener(this);
+        load = new JButton("Load Saved Quiz");
+        load.setBounds((WIDTH / 2) - 125,HEIGHT - 400,400,60);
+        load.addActionListener(this);
         namePanel = new JPanel(null);
         namePanel.add(titleLabel);
         namePanel.add(writeTitle);
         namePanel.add(makeQuiz);
+        namePanel.add(load);
     }
 
     public void initFrame() {
@@ -140,6 +146,7 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
     }
 
     public void openAddQuestion() {
+        nameList.clearSelection();
         startLabel.setVisible(false);
         split.setBottomComponent(new AddQuestionPanel(this));
         split.setDividerLocation(150);
@@ -212,6 +219,17 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         }
     }
 
+    public void loadQuiz() {
+        try {
+            quiz = jsonReader.read();
+            initFrame();
+            setContentPane(split);
+            updateQuestionList();
+        } catch (IOException e) {
+            setBackground(Color.RED);
+        }
+    }
+
     public void takeQuiz() {
         setContentPane(new TakeQuizPanel(quiz,this));
     }
@@ -243,6 +261,8 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
                 } else {
                     setBackground(Color.RED);
                 }
+            } else if (e.getSource() == load) {
+                loadQuiz();
             }
         }
     }

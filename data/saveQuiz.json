@@ -1,45 +1,45 @@
 {
     "questions": [
         {
-            "question": "",
+            "question": "What is my name?",
             "answer": "A",
             "options": [
-                "",
-                "",
-                "",
-                ""
+                "Harsh",
+                "Anas",
+                "Naman",
+                "Sanuda"
             ]
         },
         {
-            "question": "",
+            "question": "Where am I from?",
             "answer": "B",
             "options": [
-                "",
-                "",
-                "",
-                ""
+                "Vancouver",
+                "Calgary",
+                "Edmonton",
+                "Toronto"
             ]
         },
         {
-            "question": "",
-            "answer": "C",
-            "options": [
-                "",
-                "",
-                "",
-                ""
-            ]
-        },
-        {
-            "question": "",
+            "question": "What school do I go to?",
             "answer": "D",
             "options": [
-                "",
-                "",
-                "",
-                ""
+                "UofC",
+                "UofT",
+                "Waterloo",
+                "UBC"
+            ]
+        },
+        {
+            "question": "What is my favourite sport?",
+            "answer": "A",
+            "options": [
+                "Hockey",
+                "Basketball",
+                "Football",
+                "Swimming"
             ]
         }
     ],
-    "title": ""
+    "title": "Harsh's Quiz"
 }
