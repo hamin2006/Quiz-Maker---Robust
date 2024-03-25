@@ -61,6 +61,7 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
         gradeView.setEditable(false);
         gradeView.setHorizontalAlignment(SwingConstants.CENTER);
     }
+
     public void initQuesView() {
         int index = 0;
         quesView.setText(quiz.printQuiz());
@@ -72,8 +73,6 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
             index++;
         }
     }
-
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
