@@ -40,7 +40,7 @@ class QuestionTest {
                 "A) Harsh\n" +
                 "B) Amin\n" +
                 "C) Alex\n" +
-                "D) Bob\n\n");
+                "D) Bob\n\n\n");
 
         ArrayList<String> newOpts = new ArrayList<>();
         newOpts.add("A");
@@ -55,6 +55,6 @@ class QuestionTest {
                         "A) A\n" +
                         "B) B\n" +
                         "C) C\n" +
-                        "D) D\n\n");
+                        "D) D\n\n\n");
     }
 }

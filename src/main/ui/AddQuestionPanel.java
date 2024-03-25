@@ -23,7 +23,7 @@ public class AddQuestionPanel extends JPanel implements ActionListener {
     private JTextArea optionBWrite;
     private JTextArea optionCWrite;
     private JTextArea optionDWrite;
-    private JTextArea ansWrite;
+    private JComboBox ansWrite;
     private JButton addQ;
     private QuizMakerGUI gui;
 
@@ -54,7 +54,7 @@ public class AddQuestionPanel extends JPanel implements ActionListener {
         optionCWrite.setBounds((WIDTH / 2) - 225,HEIGHT - 550,400,20);
         optionDWrite = new JTextArea();
         optionDWrite.setBounds((WIDTH / 2) - 225,HEIGHT - 500,400,20);
-        ansWrite = new JTextArea();
+        ansWrite = new JComboBox(new String[]{"A","B","C","D"});
         ansWrite.setBounds((WIDTH / 2) - 225,HEIGHT - 450,400,20);
         addQ = new JButton("Create Question");
         addQ.setBounds((WIDTH / 2) - 225,HEIGHT - 400,400,50);
@@ -83,7 +83,7 @@ public class AddQuestionPanel extends JPanel implements ActionListener {
             options.add(optionBWrite.getText());
             options.add(optionCWrite.getText());
             options.add(optionDWrite.getText());
-            Question newQ = new Question(questionWrite.getText(),options,ansWrite.getText());
+            Question newQ = new Question(questionWrite.getText(),options,(String) ansWrite.getSelectedItem());
             gui.addQuestion(newQ);
         }
     }

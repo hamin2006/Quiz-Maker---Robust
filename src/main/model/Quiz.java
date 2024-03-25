@@ -48,14 +48,14 @@ public class Quiz implements Writable {
 
     // EFFECTS: creates a outputable string format of the whole quiz
     public String printQuiz() {
-        String output = "----------------------------------------------------------------------------------";
+        String output = "\n";
         output += title + "\n\n";
         int questionNumber = 1;
         for (Question q : questions) {
             output += questionNumber + ". " + q.printQuestion();
             questionNumber++;
         }
-        output += "----------------------------------------------------------------------------------\n";
+        output += "\n";
         return output;
     }
 

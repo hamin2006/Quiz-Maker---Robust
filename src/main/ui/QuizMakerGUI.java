@@ -21,6 +21,7 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private JPanel contentPane;
+    private JPanel namePanel;
     private JPanel buttons;
     private JList nameList;
     private JScrollPane scrollPane;
@@ -41,7 +42,10 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
 
     public QuizMakerGUI() {
         super();
+        jsonWriter = new JsonWriter(LOCATION);
+        jsonReader = new JsonReader(LOCATION);
         nameQuiz();
+        setContentPane(namePanel);
     }
 
     public void nameQuiz() {
@@ -56,11 +60,12 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         writeTitle = new JTextArea();
         writeTitle.setBounds((WIDTH / 2) - 125,HEIGHT - 500,400,20);
         makeQuiz = new JButton("Enter");
-        makeQuiz.setBounds((WIDTH / 2) - 125,HEIGHT - 470,400,20);
+        makeQuiz.setBounds((WIDTH / 2) - 125,HEIGHT - 470,400,25);
         makeQuiz.addActionListener(this);
-        add(titleLabel);
-        add(writeTitle);
-        add(makeQuiz);
+        namePanel = new JPanel(null);
+        namePanel.add(titleLabel);
+        namePanel.add(writeTitle);
+        namePanel.add(makeQuiz);
     }
 
     public void initFrame() {
@@ -82,6 +87,7 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         addQ.setBounds(0,0,70,25);
         addQ.addActionListener(this);
         save = new JButton("Save");
+        save.setOpaque(true);
         save.setBounds(70,0,70,25);
         save.addActionListener(this);
         take = new JButton("Take");
@@ -109,8 +115,6 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         split.setDividerSize(0);
         split.setDividerLocation(150);
         add(split);
-
-        quiz = new Quiz(title);
     }
 
     public void initStartPanel() {
@@ -202,29 +206,44 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
             jsonWriter.open();
             jsonWriter.write(quiz);
             jsonWriter.close();
-            save.setForeground(Color.GREEN);
+            setBackground(Color.GREEN);
         } catch (FileNotFoundException e) {
-            save.setForeground(Color.RED);
+            setBackground(Color.RED);
         }
+    }
+
+    public void takeQuiz() {
+        setContentPane(new TakeQuizPanel(quiz,this));
+    }
+
+    public void enableSplit() {
+        setContentPane(split);
     }
 
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        save.setForeground(Color.white);
         if (e.getSource() == makeQuiz) {
-            titleLabel.setVisible(false);
-            writeTitle.setVisible(false);
-            makeQuiz.setVisible(false);
             title = writeTitle.getText();
+            quiz = new Quiz(title);
             initFrame();
-        } else if (e.getSource() == addQ) {
-            openAddQuestion();
-        } else if (e.getSource() == view) {
-            openViewAllPanel();
-        } else if (e.getSource() == save) {
-            saveQuiz();
+            setContentPane(split);
+        } else {
+            setBackground(Color.white);
+            if (e.getSource() == addQ) {
+                openAddQuestion();
+            } else if (e.getSource() == view) {
+                openViewAllPanel();
+            } else if (e.getSource() == save) {
+                saveQuiz();
+            } else if (e.getSource() == take) {
+                if (quiz.getQuestions().size() > 0) {
+                    takeQuiz();
+                } else {
+                    setBackground(Color.RED);
+                }
+            }
         }
     }
 

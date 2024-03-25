@@ -28,7 +28,7 @@ public class Question implements Writable {
             list += LETTERS[index] + ") " + s + "\n";
             index++;
         }
-        list += "\n";
+        list += "\n\n";
         return list;
     }
 
