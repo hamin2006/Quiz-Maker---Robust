@@ -27,16 +27,27 @@ public class EditQuestionPanel extends JPanel implements ActionListener {
     private JTextArea optionDWrite;
     private JComboBox ansWrite;
     private JButton addQ;
+    private Question currQues;
 
     public EditQuestionPanel(Quiz q, QuizMakerGUI gui, int index) {
         this.gui = gui;
         this.index = index;
         setSize(WIDTH - 150,HEIGHT);
         setLayout(null);
-        Question currQues = q.getQuestions().get(index);
+        currQues = q.getQuestions().get(index);
         question = new JLabel("Question");
         question.setBounds((WIDTH / 2) - 300,HEIGHT - 700,75,20);
+        setLabels();
+        setTextFields();
+        addQ = new JButton("Edit Question");
+        addQ.setBounds((WIDTH / 2) - 225,HEIGHT - 400,400,50);
+        addQ.setBackground(Color.LIGHT_GRAY);
+        addQ.addActionListener(this);
+        addToPanel();
 
+    }
+
+    public void setLabels() {
         optionA = new JLabel("Option A");
         optionA.setBounds((WIDTH / 2) - 300,HEIGHT - 650,75,20);
         optionB = new JLabel("Option B");
@@ -47,6 +58,9 @@ public class EditQuestionPanel extends JPanel implements ActionListener {
         optionD.setBounds((WIDTH / 2) - 300,HEIGHT - 500,75,20);
         ans = new JLabel("Answer");
         ans.setBounds((WIDTH / 2) - 300,HEIGHT - 450,75,20);
+    }
+
+    public void setTextFields() {
         questionWrite = new JTextArea(currQues.getQuestion());
         questionWrite.setBounds((WIDTH / 2) - 225,HEIGHT - 700,400,20);
         optionAWrite = new JTextArea(currQues.getOptions().get(0));
@@ -60,10 +74,9 @@ public class EditQuestionPanel extends JPanel implements ActionListener {
         ansWrite = new JComboBox(new String[]{"A","B","C","D"});
         ansWrite.setSelectedItem(currQues.getAnswer());
         ansWrite.setBounds((WIDTH / 2) - 225,HEIGHT - 450,400,20);
-        addQ = new JButton("Edit Question");
-        addQ.setBounds((WIDTH / 2) - 225,HEIGHT - 400,400,50);
-        addQ.setBackground(Color.LIGHT_GRAY);
-        addQ.addActionListener(this);
+    }
+
+    public void addToPanel() {
         add(question);
         add(optionA);
         add(optionB);
@@ -77,7 +90,6 @@ public class EditQuestionPanel extends JPanel implements ActionListener {
         add(optionDWrite);
         add(ansWrite);
         add(addQ);
-
     }
 
     @Override

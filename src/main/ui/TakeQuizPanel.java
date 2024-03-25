@@ -34,6 +34,14 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
         quesView.setBackground(Color.lightGray);
         quesView.setText("");
         quesView.setFont(new Font("Sans Serif", Font.PLAIN, 20));
+        setPanel();
+        add(submit);
+        add(gradeView);
+        add(back);
+        initQuesView();
+    }
+
+    public void setPanel() {
         scrollPane = new JScrollPane(quesView);
         scrollPane.setBounds(5,5,WIDTH - 10,HEIGHT - 150);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -52,12 +60,7 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
         gradeView.setFont(new Font("Sans Serif", Font.PLAIN, 50));
         gradeView.setEditable(false);
         gradeView.setHorizontalAlignment(SwingConstants.CENTER);
-        add(submit);
-        add(gradeView);
-        add(back);
-        initQuesView();
     }
-
     public void initQuesView() {
         int index = 0;
         quesView.setText(quiz.printQuiz());
@@ -69,6 +72,8 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
             index++;
         }
     }
+
+
 
     @Override
     public void actionPerformed(ActionEvent e) {

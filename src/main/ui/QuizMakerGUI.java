@@ -82,32 +82,9 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         nameList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         nameList.setSelectedIndex(0);
         nameList.addListSelectionListener(this);
-
-        buttons = new JPanel(null);
-        buttons.setSize(150,25);
-
         initStartPanel();
-
-
-        addQ = new JButton("+");
-        addQ.setBounds(0,0,70,25);
-        addQ.addActionListener(this);
-        save = new JButton("Save");
-        save.setOpaque(true);
-        save.setBounds(70,0,70,25);
-        save.addActionListener(this);
-        take = new JButton("Take");
-        take.setBounds(0,25,70,25);
-        take.addActionListener(this);
-        view = new JButton("View");
-        view.setBounds(70,25,70,25);
-        view.addActionListener(this);
-        buttons.add(addQ);
-        buttons.add(save);
-        buttons.add(take);
-        buttons.add(view);
+        initButtons();
         scrollPane = new JScrollPane(nameList);
-
 
         split2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT,buttons,scrollPane);
         split2.setBounds(0,0,150,HEIGHT);
@@ -129,6 +106,28 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         startLabel = new JLabel("Click the + button in the top left to add a question");
         startLabel.setBounds((WIDTH / 2) - 200,HEIGHT - 600,400,20);
         contentPane.add(startLabel);
+    }
+
+    public void initButtons() {
+        buttons = new JPanel(null);
+        buttons.setSize(150,25);
+        addQ = new JButton("+");
+        addQ.setBounds(0,0,70,25);
+        addQ.addActionListener(this);
+        save = new JButton("Save");
+        save.setOpaque(true);
+        save.setBounds(70,0,70,25);
+        save.addActionListener(this);
+        take = new JButton("Take");
+        take.setBounds(0,25,70,25);
+        take.addActionListener(this);
+        view = new JButton("View");
+        view.setBounds(70,25,70,25);
+        view.addActionListener(this);
+        buttons.add(addQ);
+        buttons.add(save);
+        buttons.add(take);
+        buttons.add(view);
     }
 
     public void updateQuestionList() {

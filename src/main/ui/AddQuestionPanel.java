@@ -34,6 +34,16 @@ public class AddQuestionPanel extends JPanel implements ActionListener {
         question = new JLabel("Question");
         question.setBounds((WIDTH / 2) - 300,HEIGHT - 700,75,20);
 
+        setLabels();
+        setTextFields();
+        addQ = new JButton("Create Question");
+        addQ.setBounds((WIDTH / 2) - 225,HEIGHT - 400,400,50);
+        addQ.setBackground(Color.LIGHT_GRAY);
+        addQ.addActionListener(this);
+        addToPanel();
+    }
+
+    public void setLabels() {
         optionA = new JLabel("Option A");
         optionA.setBounds((WIDTH / 2) - 300,HEIGHT - 650,75,20);
         optionB = new JLabel("Option B");
@@ -44,6 +54,9 @@ public class AddQuestionPanel extends JPanel implements ActionListener {
         optionD.setBounds((WIDTH / 2) - 300,HEIGHT - 500,75,20);
         ans = new JLabel("Answer");
         ans.setBounds((WIDTH / 2) - 300,HEIGHT - 450,75,20);
+    }
+
+    public void setTextFields() {
         questionWrite = new JTextArea();
         questionWrite.setBounds((WIDTH / 2) - 225,HEIGHT - 700,400,20);
         optionAWrite = new JTextArea();
@@ -56,10 +69,9 @@ public class AddQuestionPanel extends JPanel implements ActionListener {
         optionDWrite.setBounds((WIDTH / 2) - 225,HEIGHT - 500,400,20);
         ansWrite = new JComboBox(new String[]{"A","B","C","D"});
         ansWrite.setBounds((WIDTH / 2) - 225,HEIGHT - 450,400,20);
-        addQ = new JButton("Create Question");
-        addQ.setBounds((WIDTH / 2) - 225,HEIGHT - 400,400,50);
-        addQ.setBackground(Color.LIGHT_GRAY);
-        addQ.addActionListener(this);
+    }
+
+    public void addToPanel() {
         add(question);
         add(optionA);
         add(optionB);
