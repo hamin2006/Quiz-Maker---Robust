@@ -13,7 +13,6 @@ import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectionListener {
     private static final int WIDTH = 1000;
@@ -22,22 +21,17 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private JPanel contentPane;
-    private JPanel namePanel;
     private JPanel buttons;
     private JList nameList;
     private JScrollPane scrollPane;
     private JSplitPane split;
     private JSplitPane split2;
     private JLabel startLabel;
-    private JLabel titleLabel;
-    private JTextArea writeTitle;
     private ArrayList<String> indexs;
     private JButton addQ;
-    private JButton makeQuiz;
     private JButton take;
     private JButton view;
     private JButton save;
-    private JButton load;
     private Quiz quiz;
     private String title;
 
@@ -47,7 +41,6 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         jsonWriter = new JsonWriter(LOCATION);
         jsonReader = new JsonReader(LOCATION);
         nameQuiz();
-        setContentPane(namePanel);
     }
 
     public void nameQuiz() {
@@ -57,21 +50,7 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(WIDTH, HEIGHT);
         setLayout(null);
-        titleLabel = new JLabel("Quiz Title:");
-        titleLabel.setBounds((WIDTH / 2) - 200,HEIGHT - 500,400,20);
-        writeTitle = new JTextArea();
-        writeTitle.setBounds((WIDTH / 2) - 125,HEIGHT - 500,400,20);
-        makeQuiz = new JButton("Enter");
-        makeQuiz.setBounds((WIDTH / 2) - 125,HEIGHT - 470,400,60);
-        makeQuiz.addActionListener(this);
-        load = new JButton("Load Saved Quiz");
-        load.setBounds((WIDTH / 2) - 125,HEIGHT - 400,400,60);
-        load.addActionListener(this);
-        namePanel = new JPanel(null);
-        namePanel.add(titleLabel);
-        namePanel.add(writeTitle);
-        namePanel.add(makeQuiz);
-        namePanel.add(load);
+        setContentPane(new NamePanel(this));
     }
 
     public void initFrame() {
@@ -170,6 +149,13 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         split.setDividerLocation(150);
     }
 
+    public void beginQuizMaker(String title) {
+        this.title = title;
+        quiz = new Quiz(title);
+        initFrame();
+        setContentPane(split);
+    }
+
     public void setQuestionIndex(int i) {
         nameList.setSelectedIndex(i);
     }
@@ -241,33 +227,26 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == makeQuiz) {
-            title = writeTitle.getText();
-            quiz = new Quiz(title);
-            initFrame();
-            setContentPane(split);
-        } else {
-            setBackground(Color.white);
-            if (e.getSource() == addQ) {
-                openAddQuestion();
-            } else if (e.getSource() == view) {
-                openViewAllPanel();
-            } else if (e.getSource() == save) {
-                saveQuiz();
-            } else if (e.getSource() == take) {
-                if (quiz.getQuestions().size() > 0) {
-                    takeQuiz();
-                } else {
-                    setBackground(Color.RED);
-                }
-            } else if (e.getSource() == load) {
-                loadQuiz();
+        setBackground(Color.white);
+        if (e.getSource() == addQ) {
+            openAddQuestion();
+        } else if (e.getSource() == view) {
+            openViewAllPanel();
+        } else if (e.getSource() == save) {
+            saveQuiz();
+        } else if (e.getSource() == take) {
+            if (quiz.getQuestions().size() > 0) {
+                takeQuiz();
+            } else {
+                setBackground(Color.RED);
             }
         }
+
     }
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
+        setBackground(Color.white);
         JList ls = (JList) e.getSource();
         int i = ls.getSelectedIndex();
         if (i >= 0) {

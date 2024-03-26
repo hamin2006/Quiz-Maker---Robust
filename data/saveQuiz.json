@@ -39,6 +39,16 @@
                 "Football",
                 "Swimming"
             ]
+        },
+        {
+            "question": "What class is this assignment for?",
+            "answer": "C",
+            "options": [
+                "CPSC 121",
+                "CPSC 221",
+                "CPSC 210",
+                "CPSC 110"
+            ]
         }
     ],
     "title": "Harsh's Quiz"
