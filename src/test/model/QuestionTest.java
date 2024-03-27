@@ -72,4 +72,10 @@ class QuestionTest {
         assertFalse(question.equals(question4));
         assertFalse(question.equals(question5));
     }
+
+    @Test
+    void testHashcode() {
+        Question question2 = new Question(quesStatement,options,answer);
+        assertEquals(question.hashCode(),question2.hashCode());
+    }
 }
