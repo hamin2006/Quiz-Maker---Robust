@@ -27,3 +27,17 @@ fellow peers.
 - **As a user, I want to be able to complete the quiz and view performance statistics** 
 - **As a user, I want to have the option to save the state of the quiz that has been worked on to file**
 - **As a user, I want to have the option to load the state of previously the saved quiz from file**
+
+# Instructions for Grader
+
+- You can generate the first required action related to the user story "adding multiple questions to a quiz" by pressing
+the + button at the top left of the project. This will prompt you to enter the new details of a question.
+- You can generate the second required action related to the user stories such as view all questions by clicking the
+view button in the top left group of buttons. You can take the quiz and get graded by selecting the take button. To 
+edit or remove a question you can click on a question from the list on the leftside panel which will open up the
+question giving you options to edit or remove it.
+- You can locate my visual component when you start the program, there is an image/icon which will pop up.
+- You can save the state of my application by clicking the save button on the main quiz panel.
+- You can reload the state of my application by clicking the load saved quiz button when you start the project
+
+Visual component retrieved from: https://www.google.com/url?sa=i&url=https%3A%2F%2Felearningindustry.com%2Ftags%2Fquiz-activity&psig=AOvVaw0n4O8pZp2LTm4qYdnnOMRn&ust=1711604856176000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLinpY3fk4UDFQAAAAAdAAAAABAE

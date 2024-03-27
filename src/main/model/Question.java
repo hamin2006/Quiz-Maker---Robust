@@ -42,6 +42,7 @@ public class Question implements Writable {
         return json;
     }
 
+    // EFFECTS: returns true if the instance fields of the object are equal to this instance of question
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -56,6 +57,7 @@ public class Question implements Writable {
                 && Objects.equals(answer, question1.answer);
     }
 
+    // EFFECTS: returns the hashcode of this instance of a question
     @Override
     public int hashCode() {
         return Objects.hash(options, question, answer);

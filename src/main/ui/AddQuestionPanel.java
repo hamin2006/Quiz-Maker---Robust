@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class AddQuestionPanel extends JPanel implements ActionListener {
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 800;
-    private Quiz quiz;
     private JLabel question;
     private JLabel optionA;
     private JLabel optionB;

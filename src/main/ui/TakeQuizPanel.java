@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -48,13 +47,13 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         add(scrollPane);
         submit = new JButton("Submit");
-        submit.setBounds(WIDTH / 2 - 100, HEIGHT - 125, 200, 75);
+        submit.setBounds(WIDTH / 2 - 100, HEIGHT - 125, 300, 75);
         submit.addActionListener(this);
         back = new JButton("Back");
-        back.setBounds(WIDTH / 2 - 400, HEIGHT - 125, 200, 75);
+        back.setBounds(WIDTH / 2 - 450, HEIGHT - 125, 300, 75);
         back.addActionListener(this);
         gradeView = new JTextField();
-        gradeView.setBounds(WIDTH / 2 + 200, HEIGHT - 125, 200, 75);
+        gradeView.setBounds(WIDTH / 2 + 250, HEIGHT - 125, 200, 75);
         gradeView.setBackground(new Color(240,240,240));
         gradeView.setBorder(null);
         gradeView.setFont(new Font("Sans Serif", Font.PLAIN, 50));
