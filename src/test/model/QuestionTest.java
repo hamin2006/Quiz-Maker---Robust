@@ -64,6 +64,12 @@ class QuestionTest {
         assertFalse(question.equals(new Quiz("")));
         assertFalse(question.equals(null));
         Question question2 = new Question(quesStatement,options,answer);
+        Question question3 = new Question("hamin",options,answer);
+        Question question4 = new Question(quesStatement,new ArrayList<>(),answer);
+        Question question5 = new Question(quesStatement,options,"C");
         assertTrue(question.equals(question2));
+        assertFalse(question.equals(question3));
+        assertFalse(question.equals(question4));
+        assertFalse(question.equals(question5));
     }
 }
