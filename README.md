@@ -9,10 +9,10 @@ application would **mainly serve to help students** who are trying to prepare fo
 there are no true bounds to its uses.
 
 ### How will it work? 
-The application will allow a user to create and save multiple quizzes. Furthermore, there will be no bounds as to how
+The application will allow a user to create and save a quiz. Furthermore, there will be no bounds as to how
 many questions must be in one quiz and the application will allow you to save and load all quizzes previously worked on.
-The user will also be able to edit and delete individual quizzes, as well as the questions inside of them. They will
-have options to set the correct answer (answers if there are more than one) for individual questions and upon 
+The user will also be able to edit and delete all the questions inside of them. They will have options to set the 
+correct answer (answers if there are more than one) for individual questions and upon 
 completion of making the quiz the user can then prompt a new panel in which they can take the quiz they just created.
 After they've taken the quiz they can check their quiz statistics to see how well they did on the quiz and whether they
 should retake it to improve their understanding. Furthermore, every time they reopen the application the quiz statistics
@@ -21,11 +21,9 @@ The application should serve as a great tool for users, whether they are trying 
 fellow peers.
 ## User Story
 
-- As a user, I want to be able to create a quiz and add it to a list of quizzes
 - **As a user, I want to be able to add question(s) to a selected quiz**
 - **As a user, I want to be able to remove and edit questions in a quiz**                
 - **As a user, I want to be able to view/list all the questions in a selected quiz**          
 - **As a user, I want to be able to complete the quiz and view performance statistics** 
-- **As a user, I want to have the option to save the state of the quiz(zes) that have been worked on to file**
-- **As a user, I want to have the option to load the state of previously saved quiz(zes) from file**
-- **As a user, I want to have access to multiple quizzes that can be saved and edited**
+- **As a user, I want to have the option to save the state of the quiz that has been worked on to file**
+- **As a user, I want to have the option to load the state of previously the saved quiz from file**

@@ -67,6 +67,7 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
         quesView.setText(quiz.printQuiz());
         for (Question q : quiz.getQuestions()) {
             JComboBox box = new JComboBox<>(new String[]{"A","B","C","D"});
+            box.addActionListener(this);
             box.setBounds(20, 175 * index + 200, 100, 30);
             boxs.add(box);
             quesView.add(box);
@@ -85,6 +86,8 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
             gradeView.setText(grade + "%");
         } else if (e.getSource() == back) {
             gui.enableSplit();
+        } else if (e.getSource() instanceof JComboBox) {
+            gradeView.setText("");
         }
 
     }

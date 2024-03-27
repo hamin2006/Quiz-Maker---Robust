@@ -44,11 +44,11 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
     }
 
     public void nameQuiz() {
+        setSize(WIDTH, HEIGHT);
         setTitle("Quiz Maker");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(WIDTH, HEIGHT);
         setLayout(null);
         setContentPane(new NamePanel(this));
     }

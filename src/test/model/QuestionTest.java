@@ -57,4 +57,13 @@ class QuestionTest {
                         "C) C\n" +
                         "D) D\n\n\n");
     }
+
+    @Test
+    void testEquals() {
+        assertTrue(question.equals(question));
+        assertFalse(question.equals(new Quiz("")));
+        assertFalse(question.equals(null));
+        Question question2 = new Question(quesStatement,options,answer);
+        assertTrue(question.equals(question2));
+    }
 }
