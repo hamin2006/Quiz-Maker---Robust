@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Panel which views one question and gives the option to remove or edit the question
 public class ViewQuestionPanel extends JPanel implements ActionListener {
     private static final int WIDTH = 1000 - 150;
     private static final int HEIGHT = 800;
@@ -17,6 +18,7 @@ public class ViewQuestionPanel extends JPanel implements ActionListener {
     private JButton edit;
     private JButton delete;
 
+    // EFFECTS: constructs the frame of the panel, setting the text to be the question in the quiz at index i
     public ViewQuestionPanel(Quiz q, QuizMakerGUI gui, int i) {
         this.gui = gui;
         this.index = i;
@@ -41,6 +43,8 @@ public class ViewQuestionPanel extends JPanel implements ActionListener {
         add(delete);
     }
 
+    // MODIFIES: this
+    // EFFECTS: handles the deletion and editing of a individual question
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == delete) {

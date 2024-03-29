@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+// This class represents the initial panel which the user will interact with to load or create a new quiz
 public class NamePanel extends JPanel implements ActionListener {
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 800;
@@ -18,6 +19,7 @@ public class NamePanel extends JPanel implements ActionListener {
     JButton makeQuiz;
     JButton load;
 
+    // EFFECTS: constructs a new Name Panel, loading the visual component
     public NamePanel(QuizMakerGUI gui) {
         this.gui = gui;
         setSize(WIDTH, HEIGHT);
@@ -41,9 +43,11 @@ public class NamePanel extends JPanel implements ActionListener {
         } catch (Exception e) {
             System.out.println("cant read");
         }
-        setBackground(new Color(255,224,75));
+        setBackground(new Color(255,225,70));
     }
 
+    // MODIFIES: this
+    // EFFECTS: Overrides the JPanel method and draws visual component to the panel
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -51,6 +55,8 @@ public class NamePanel extends JPanel implements ActionListener {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: Handles whether the user wants to make a new quiz or load a saved quiz and calls on that method
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == makeQuiz) {

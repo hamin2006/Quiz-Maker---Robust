@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-
+// Panel which prompts a user to take the quiz and answer the questions the way they think would be correct
 public class TakeQuizPanel extends JPanel implements ActionListener {
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 800;
@@ -22,6 +22,7 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
     private ArrayList<JComboBox> boxs;
     private QuizMakerGUI gui;
 
+    // EFFECTS: constructs new take quiz panel
     public TakeQuizPanel(Quiz q,QuizMakerGUI gui) {
         this.quiz = q;
         this.gui = gui;
@@ -40,6 +41,8 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
         initQuesView();
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes all buttons, scrollbars, and text fields
     public void setPanel() {
         scrollPane = new JScrollPane(quesView);
         scrollPane.setBounds(5,5,WIDTH - 10,HEIGHT - 150);
@@ -61,6 +64,8 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
         gradeView.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets the main text field to contain all the questions and a combo box for each question
     public void initQuesView() {
         int index = 0;
         quesView.setText(quiz.printQuiz());
@@ -74,6 +79,8 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: handles grading and going "back" to the main JPanel
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == submit) {

@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+// Main GUI class which altogether represents all aspects of an entire quiz maker application
 public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectionListener {
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 800;
@@ -35,7 +36,7 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
     private Quiz quiz;
     private String title;
 
-
+    // EFFECTS: creates new JFrame and calls for the user to create a new quiz or load a saved one
     public QuizMakerGUI() {
         super();
         jsonWriter = new JsonWriter(LOCATION);
@@ -43,6 +44,8 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         nameQuiz();
     }
 
+    // MODIFIES: this
+    // EFFECTS: opens the panel which will call for the user to create a new quiz or load a saved one
     public void nameQuiz() {
         setSize(WIDTH, HEIGHT);
         setTitle("Quiz Maker");
@@ -53,6 +56,8 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         setContentPane(new NamePanel(this));
     }
 
+    // MODIFIES: this
+    // EFFECTS: Initializes the main frame of the quizmaker
     public void initFrame() {
         setTitle(title);
         indexs = new ArrayList<>();
@@ -61,6 +66,7 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         nameList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         nameList.setSelectedIndex(0);
         nameList.addListSelectionListener(this);
+        nameList.setDragEnabled(true);
         initStartPanel();
         initButtons();
         scrollPane = new JScrollPane(nameList);
@@ -79,6 +85,8 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         add(split);
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes the first content pane, prompting the user to create a new question
     public void initStartPanel() {
         contentPane = new JPanel(null);
         contentPane.setSize(WIDTH - 150,HEIGHT);
@@ -87,6 +95,8 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         contentPane.add(startLabel);
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes all buttons
     public void initButtons() {
         buttons = new JPanel(null);
         buttons.setSize(150,25);
@@ -109,6 +119,8 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         buttons.add(view);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Updates nameList to contain names for all questions in the quiz
     public void updateQuestionList() {
         if (indexs.contains("No Questions")) {
             indexs.remove("No Questions");
@@ -123,6 +135,8 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         nameList.setListData(indexs.toArray());
     }
 
+    // MODIFIES: this
+    // EFFECTS: opens new panel to add a question to the quiz
     public void openAddQuestion() {
         nameList.clearSelection();
         startLabel.setVisible(false);
@@ -130,6 +144,8 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         split.setDividerLocation(150);
     }
 
+    // MODIFIES: this
+    // EFFECTS: opens new panel to edit a previously added question in the list
     public void openEditPanel() {
         if (nameList.getSelectedIndex() >= 0) {
             split.setBottomComponent(new EditQuestionPanel(quiz, this,nameList.getSelectedIndex()));
@@ -137,11 +153,15 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         }
     }
 
-    public void openViewQuesPanel(int index) {
-        split.setBottomComponent(new ViewQuestionPanel(quiz, this, index));
+    // MODIFIES: this
+    // EFFECTS: opens new panel which views a single question at index i in the quiz's question list
+    public void openViewQuesPanel(int i) {
+        split.setBottomComponent(new ViewQuestionPanel(quiz, this, i));
         split.setDividerLocation(150);
     }
 
+    // MODIFIES: this
+    // EFFECTS: opens new panel which views all the questions in the quiz
     public void openViewAllPanel() {
         updateQuestionList();
         nameList.clearSelection();
@@ -149,6 +169,14 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         split.setDividerLocation(150);
     }
 
+    // MODIFIES: this
+    // EFFECTS: opens panel which will prompt the user to take the quiz
+    public void openTakeQuiz() {
+        setContentPane(new TakeQuizPanel(quiz,this));
+    }
+
+    // MODIFIES: this
+    // EFFECTS: Method to start the quiz maker after NamePanel execution has completed
     public void beginQuizMaker(String title) {
         this.title = title;
         quiz = new Quiz(title);
@@ -156,10 +184,14 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         setContentPane(split);
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets which index should be selected in the JList
     public void setQuestionIndex(int i) {
         nameList.setSelectedIndex(i);
     }
 
+    // MODIFIES: this
+    // EFFECTS: handles the removal of a question from quiz
     public void removeQuestion(int index) {
         quiz.removeQuestion(index);
         updateQuestionList();
@@ -176,6 +208,8 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: handles the addition of a question to the quiz
     public void addQuestion(Question q) {
         if (!quiz.getQuestions().contains(q)) {
             quiz.addQuestion(q);
@@ -184,15 +218,24 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         }
     }
 
-    public void editQuestion(String ques, ArrayList<String> options, String ans, int index) {
-        Question q = quiz.getQuestions().get(index);
+    // MODIFIES: this
+    // EFFECTS: handles the editing of a question at index i in the quiz's question list
+    public void editQuestion(String ques, ArrayList<String> options, String ans, int i) {
+        Question q = quiz.getQuestions().get(i);
         q.setQuestion(ques);
         q.setOptions(options);
         q.setAnswer(ans);
-        setQuestionIndex(index);
-        openViewQuesPanel(index);
+        setQuestionIndex(i);
+        openViewQuesPanel(i);
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets the JFrame panel to the original split pane
+    public void enableSplit() {
+        setContentPane(split);
+    }
+
+    // EFFECTS: saves quiz to file
     public void saveQuiz() {
         try {
             jsonWriter.open();
@@ -204,6 +247,8 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: reads quiz from file
     public void loadQuiz() {
         try {
             quiz = jsonReader.read();
@@ -215,16 +260,8 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         }
     }
 
-    public void takeQuiz() {
-        setContentPane(new TakeQuizPanel(quiz,this));
-    }
-
-    public void enableSplit() {
-        setContentPane(split);
-    }
-
-
-
+    // MODIFIES: this
+    // EFFECTS: handles all button pushes for the application
     @Override
     public void actionPerformed(ActionEvent e) {
         setBackground(Color.white);
@@ -236,14 +273,15 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
             saveQuiz();
         } else if (e.getSource() == take) {
             if (quiz.getQuestions().size() > 0) {
-                takeQuiz();
+                openTakeQuiz();
             } else {
                 setBackground(Color.RED);
             }
         }
-
     }
 
+    // MODIFIES: this
+    // EFFECTS: handles the changing of the panel to match the question selected when nameList selection is changed
     @Override
     public void valueChanged(ListSelectionEvent e) {
         setBackground(Color.white);

@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+// This class represents a Panel UI which handles the editing of a question
 public class EditQuestionPanel extends JPanel implements ActionListener {
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 800;
@@ -29,6 +30,7 @@ public class EditQuestionPanel extends JPanel implements ActionListener {
     private JButton addQ;
     private Question currQues;
 
+    // EFFECTS: construct a new panel ready to add a new question to the quiz
     public EditQuestionPanel(Quiz q, QuizMakerGUI gui, int index) {
         this.gui = gui;
         this.index = index;
@@ -47,6 +49,8 @@ public class EditQuestionPanel extends JPanel implements ActionListener {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes all labels
     public void setLabels() {
         optionA = new JLabel("Option A");
         optionA.setBounds((WIDTH / 2) - 300,HEIGHT - 650,75,20);
@@ -60,6 +64,8 @@ public class EditQuestionPanel extends JPanel implements ActionListener {
         ans.setBounds((WIDTH / 2) - 300,HEIGHT - 450,75,20);
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes all textfields required to write a new question
     public void setTextFields() {
         questionWrite = new JTextArea(currQues.getQuestion());
         questionWrite.setBounds((WIDTH / 2) - 225,HEIGHT - 700,400,20);
@@ -76,6 +82,8 @@ public class EditQuestionPanel extends JPanel implements ActionListener {
         ansWrite.setBounds((WIDTH / 2) - 225,HEIGHT - 450,400,20);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds all components to JPanel
     public void addToPanel() {
         add(question);
         add(optionA);
@@ -92,6 +100,8 @@ public class EditQuestionPanel extends JPanel implements ActionListener {
         add(addQ);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Makes the edit to the question in the quiz, updates JList, and prompts opening of a ViewQuestionPanel
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addQ) {

@@ -1,13 +1,13 @@
 package ui;
 
 import model.Question;
-import model.Quiz;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+// This class represents a panel UI which handles the adding of a new question to the quiz
 public class AddQuestionPanel extends JPanel implements ActionListener {
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 800;
@@ -26,6 +26,7 @@ public class AddQuestionPanel extends JPanel implements ActionListener {
     private JButton addQ;
     private QuizMakerGUI gui;
 
+    // EFFECTS: construct a new panel ready to add a new question to the quiz
     public AddQuestionPanel(QuizMakerGUI gui) {
         this.gui = gui;
         setSize(WIDTH - 150,HEIGHT);
@@ -42,6 +43,8 @@ public class AddQuestionPanel extends JPanel implements ActionListener {
         addToPanel();
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes all labels
     public void setLabels() {
         optionA = new JLabel("Option A");
         optionA.setBounds((WIDTH / 2) - 300,HEIGHT - 650,75,20);
@@ -55,6 +58,8 @@ public class AddQuestionPanel extends JPanel implements ActionListener {
         ans.setBounds((WIDTH / 2) - 300,HEIGHT - 450,75,20);
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes all textfields required to write a new question
     public void setTextFields() {
         questionWrite = new JTextArea();
         questionWrite.setBounds((WIDTH / 2) - 225,HEIGHT - 700,400,20);
@@ -70,6 +75,8 @@ public class AddQuestionPanel extends JPanel implements ActionListener {
         ansWrite.setBounds((WIDTH / 2) - 225,HEIGHT - 450,400,20);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds all components to the JPanel
     public void addToPanel() {
         add(question);
         add(optionA);
@@ -86,6 +93,8 @@ public class AddQuestionPanel extends JPanel implements ActionListener {
         add(addQ);
     }
 
+    // MODIFIES: this
+    // EFFECTS: Adds question to quiz, updates JList, and prompts opening of a ViewQuestionPanel
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addQ) {
