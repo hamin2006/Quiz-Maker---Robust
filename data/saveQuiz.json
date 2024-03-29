@@ -59,6 +59,26 @@
                 "18",
                 "19"
             ]
+        },
+        {
+            "question": "How many siblings do I have?",
+            "answer": "B",
+            "options": [
+                "0",
+                "1",
+                "2",
+                "3"
+            ]
+        },
+        {
+            "question": "Which month is my birthday in?",
+            "answer": "A",
+            "options": [
+                "January",
+                "March",
+                "August",
+                "November"
+            ]
         }
     ],
     "title": "Harsh's Quiz"

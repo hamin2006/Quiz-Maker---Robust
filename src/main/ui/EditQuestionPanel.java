@@ -65,7 +65,7 @@ public class EditQuestionPanel extends JPanel implements ActionListener {
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes all textfields required to write a new question
+    // EFFECTS: initializes all textfields required to write a new question, sets current question attributes as text
     public void setTextFields() {
         questionWrite = new JTextArea(currQues.getQuestion());
         questionWrite.setBounds((WIDTH / 2) - 225,HEIGHT - 700,400,20);

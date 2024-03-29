@@ -136,10 +136,9 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
     }
 
     // MODIFIES: this
-    // EFFECTS: opens new panel to add a question to the quiz
+    // EFFECTS: opens new panel to add a question to the quiz and clears nameList selection
     public void openAddQuestion() {
         nameList.clearSelection();
-        startLabel.setVisible(false);
         split.setBottomComponent(new AddQuestionPanel(this));
         split.setDividerLocation(150);
     }
@@ -252,6 +251,7 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
     public void loadQuiz() {
         try {
             quiz = jsonReader.read();
+            title = quiz.getTitle();
             initFrame();
             setContentPane(split);
             updateQuestionList();
