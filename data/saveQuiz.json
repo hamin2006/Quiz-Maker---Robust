@@ -49,6 +49,16 @@
                 "CPSC 210",
                 "CPSC 110"
             ]
+        },
+        {
+            "question": "How old am I?",
+            "answer": "C",
+            "options": [
+                "16",
+                "17",
+                "18",
+                "19"
+            ]
         }
     ],
     "title": "Harsh's Quiz"
