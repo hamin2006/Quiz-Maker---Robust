@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.Question;
 import model.Quiz;
 import persistence.JsonReader;
@@ -15,7 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 // Main GUI class which altogether represents all aspects of an entire quiz maker application
-public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectionListener {
+public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectionListener, WindowListener {
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 800;
     private static final String LOCATION = "./data/saveQuiz.json";
@@ -42,6 +44,7 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         jsonWriter = new JsonWriter(LOCATION);
         jsonReader = new JsonReader(LOCATION);
         nameQuiz();
+        this.addWindowListener(this);
     }
 
     // MODIFIES: this
@@ -290,5 +293,42 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         if (i >= 0) {
             openViewQuesPanel(i);
         }
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        for (Event log : EventLog.getInstance()) {
+            System.out.println(log.toString() + "\n\n");
+        }
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
     }
 }

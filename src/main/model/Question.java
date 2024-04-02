@@ -94,6 +94,7 @@ public class Question implements Writable {
     }
 
     public void setAnswer(String answer) {
+        EventLog.getInstance().logEvent(new Event("Edited Question: " + question));
         this.answer = answer;
     }
 }

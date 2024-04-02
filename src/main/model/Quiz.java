@@ -23,13 +23,15 @@ public class Quiz implements Writable {
     // EFFECTS: adds new question q to the end of the list questions
     public void addQuestion(Question q) {
         questions.add(q);
+        EventLog.getInstance().logEvent(new Event("Added Question: " + q.getQuestion()));
     }
 
     // REQUIRES: q is in the list of questions and questions.size() > 0
     // MODIFIES: this
     // EFFECTS: removes question at index q from question list
     public void removeQuestion(int q) {
-        questions.remove(q);
+        Question removed = questions.remove(q);
+        EventLog.getInstance().logEvent(new Event("Removed Question: " + removed.getQuestion()));
     }
 
     // REQUIRES: answers.size() == questions.size()
@@ -43,11 +45,14 @@ public class Quiz implements Writable {
             }
             index++;
         }
-        return Math.round(correctAnswers / Double.valueOf(answers.size()) * 100);
+        double grade = Math.round(correctAnswers / Double.valueOf(answers.size()) * 100);
+        EventLog.getInstance().logEvent(new Event("Took Quiz and Scored: " + grade));
+        return grade;
     }
 
     // EFFECTS: creates a outputable string format of the whole quiz
     public String printQuiz() {
+        EventLog.getInstance().logEvent(new Event("Viewed All Questions"));
         String output = "\n";
         output += title + "\n\n";
         int questionNumber = 1;
