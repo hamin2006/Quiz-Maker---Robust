@@ -18,13 +18,11 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
     private JScrollPane scrollPane;
     private JButton submit;
     private JButton back;
-    private Quiz quiz;
     private ArrayList<JComboBox> boxs;
     private QuizMakerGUI gui;
 
     // EFFECTS: constructs new take quiz panel
     public TakeQuizPanel(Quiz q,QuizMakerGUI gui) {
-        this.quiz = q;
         this.gui = gui;
         setSize(WIDTH,HEIGHT);
         setLayout(null);
@@ -38,7 +36,7 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
         add(submit);
         add(gradeView);
         add(back);
-        initQuesView();
+        initQuesView(q);
     }
 
     // MODIFIES: this
@@ -66,7 +64,7 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
 
     // MODIFIES: this
     // EFFECTS: sets the main text field to contain all the questions and a combo box for each question
-    public void initQuesView() {
+    public void initQuesView(Quiz quiz) {
         int index = 0;
         quesView.setText(quiz.printQuiz());
         for (Question q : quiz.getQuestions()) {
@@ -88,7 +86,7 @@ public class TakeQuizPanel extends JPanel implements ActionListener {
             for (JComboBox b : boxs) {
                 answers.add((String) b.getSelectedItem());
             }
-            int grade = Integer.valueOf((int) quiz.gradeQuiz(answers));
+            int grade = Integer.valueOf((int) gui.gradeQuiz(answers));
             gradeView.setText(grade + "%");
         } else if (e.getSource() == back) {
             gui.enableSplit();

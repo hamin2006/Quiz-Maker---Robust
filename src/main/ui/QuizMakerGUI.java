@@ -14,6 +14,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 // Main GUI class which altogether represents all aspects of an entire quiz maker application
@@ -236,6 +237,10 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
     // EFFECTS: sets the JFrame panel to the original split pane
     public void enableSplit() {
         setContentPane(split);
+    }
+
+    public double gradeQuiz(ArrayList<String> ans) {
+        return quiz.gradeQuiz(ans);
     }
 
     // EFFECTS: saves quiz to file
