@@ -239,6 +239,7 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
         setContentPane(split);
     }
 
+    // EFFECTS: returns the grade achieved on the quiz given the answer
     public double gradeQuiz(ArrayList<String> ans) {
         return quiz.gradeQuiz(ans);
     }
