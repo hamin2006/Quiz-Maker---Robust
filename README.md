@@ -53,7 +53,7 @@ JSON Serializaion inspired from UBC CPSC 210 example serialization
 ### Actions:
 1. Added new question named "What is my name?"
 2. Edited question named "What is my name?"
-3. View/Take's quiz for grades (answer is correct)
+3. Take's quiz for grades (Only logs grade if submitted, otherwise logs only viewed)
 4. Viewed all questions
 5. Removed question "What is my name?"
 

@@ -150,7 +150,8 @@ public class QuizMakerGUI extends JFrame implements ActionListener, ListSelectio
     // EFFECTS: opens new panel to edit a previously added question in the list
     public void openEditPanel() {
         if (nameList.getSelectedIndex() >= 0) {
-            split.setBottomComponent(new EditQuestionPanel(quiz, this,nameList.getSelectedIndex()));
+            split.setBottomComponent(new EditQuestionPanel(quiz.getQuestions().get(nameList.getSelectedIndex()),
+                    this,nameList.getSelectedIndex()));
             split.setDividerLocation(150);
         }
     }

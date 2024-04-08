@@ -28,19 +28,17 @@ public class EditQuestionPanel extends JPanel implements ActionListener {
     private JTextArea optionDWrite;
     private JComboBox ansWrite;
     private JButton addQ;
-    private Question currQues;
 
     // EFFECTS: construct a new panel ready to add a new question to the quiz
-    public EditQuestionPanel(Quiz q, QuizMakerGUI gui, int index) {
+    public EditQuestionPanel(Question q, QuizMakerGUI gui, int index) {
         this.gui = gui;
         this.index = index;
         setSize(WIDTH - 150,HEIGHT);
         setLayout(null);
-        currQues = q.getQuestions().get(index);
         question = new JLabel("Question");
         question.setBounds((WIDTH / 2) - 300,HEIGHT - 700,75,20);
         setLabels();
-        setTextFields();
+        setTextFields(q);
         addQ = new JButton("Edit Question");
         addQ.setBounds((WIDTH / 2) - 225,HEIGHT - 400,400,50);
         addQ.setBackground(Color.LIGHT_GRAY);
@@ -66,7 +64,7 @@ public class EditQuestionPanel extends JPanel implements ActionListener {
 
     // MODIFIES: this
     // EFFECTS: initializes all textfields required to write a new question, sets current question attributes as text
-    public void setTextFields() {
+    public void setTextFields(Question currQues) {
         questionWrite = new JTextArea(currQues.getQuestion());
         questionWrite.setBounds((WIDTH / 2) - 225,HEIGHT - 700,400,20);
         optionAWrite = new JTextArea(currQues.getOptions().get(0));
