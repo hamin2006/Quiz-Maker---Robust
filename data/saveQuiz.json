@@ -79,6 +79,16 @@
                 "August",
                 "November"
             ]
+        },
+        {
+            "question": "What's my intended major?",
+            "answer": "D",
+            "options": [
+                "Physics",
+                "Stats",
+                "Math",
+                "Computer Science"
+            ]
         }
     ],
     "title": "Harsh's Quiz"
